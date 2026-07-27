@@ -38,4 +38,12 @@ spotless {
         trimTrailingWhitespace()
         endWithNewline()
     }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+            }
+        }
+    }
 }
