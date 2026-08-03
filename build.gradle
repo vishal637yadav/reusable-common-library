@@ -2,6 +2,8 @@ plugins {
     id 'java-library'
     id 'com.diffplug.spotless' version '6.25.0' // Use the latest version
     id 'maven-publish'
+    id 'jacoco'
+    id 'pmd'
 }
 
 group = 'com.common.library'

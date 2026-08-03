@@ -2,6 +2,7 @@ package com.common.mvel.exception;
 
 /** Exception thrown when a script fails to compile within the MvelScriptEngine. */
 public class ScriptExecutionException extends RuntimeException {
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs a new ScriptExecutionException with the specified detail message.

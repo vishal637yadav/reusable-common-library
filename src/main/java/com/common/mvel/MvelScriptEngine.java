@@ -27,7 +27,7 @@ public class MvelScriptEngine implements MvelEvaluator {
     try {
       // By default, we compile without strict typing unless pre-registered
       return MVEL.compileExpression(expression);
-    } catch (Exception e) {
+    } catch (ScriptCompilationException e) {
       throw new ScriptCompilationException("Failed to compile MVEL expression: " + expression, e);
     }
   }
@@ -43,7 +43,7 @@ public class MvelScriptEngine implements MvelEvaluator {
 
       Serializable compiled = MVEL.compileExpression(expression, context);
       cache.put(expression, compiled);
-    } catch (Exception e) {
+    } catch (ScriptCompilationException e) {
       throw new ScriptCompilationException(
           "Failed to register and compile script with strict typing.", e);
     }
@@ -55,7 +55,7 @@ public class MvelScriptEngine implements MvelEvaluator {
     try {
       // Executing in compiled mode is significantly faster for repeated executions
       return MVEL.executeExpression(compiledScript, variables);
-    } catch (Exception e) {
+    } catch (ScriptExecutionException e) {
       throw new ScriptExecutionException("Error executing script: " + expression, e);
     }
   }
@@ -67,7 +67,7 @@ public class MvelScriptEngine implements MvelEvaluator {
     try {
       // Injects both a context object (for property navigation) and a Map of variables
       return MVEL.executeExpression(compiledScript, context, variables);
-    } catch (Exception e) {
+    } catch (ScriptExecutionException e) {
       throw new ScriptExecutionException("Error executing script with context: " + expression, e);
     }
   }

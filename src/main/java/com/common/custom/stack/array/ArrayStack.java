@@ -25,7 +25,8 @@ public class ArrayStack<E> implements Stack<E> {
     if (size == this.data.length - 1) {
       throw new StackFullException();
     }
-    this.data[++size] = data;
+    size++;
+    this.data[size] = data;
   }
 
   @Override
